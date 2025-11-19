@@ -17,6 +17,12 @@
 <label>Потенциал ионизации (эВ):</label><br>
 <input id="Ip" type="number" step="any" value="13.6"><br><br>
 
+<label>Продольный шаг (a.u.):</label><br>
+<input id="dx" type="number" step="any" value="0.25"><br><br>
+
+<label>Поглощающий слой с одной стороны (a.u.):</label><br>
+<input id="labs" type="number" step="any" value="50"><br><br>
+    
 <button onclick="calculate()">Посчитать</button>
 
 <h3>Результаты:</h3>
@@ -47,12 +53,14 @@ function calculate() {
     let Ec = Ip + 3.17 * Up;                       // энергия отсечки (a.u.)
     let harmonic = Ec / omega;                     // номер гармоники
     let Ec_eV = Ec/ev_to_au                        // энергия отсечки в эВ
+    let Nx_minimal = (4*r_osc + 2*labs)/dx         // минимальный размер сетки
 
     document.getElementById("result").innerHTML =
         "Осцилляторный радиус r<sub>osc</sub>  = <b>" + r_osc.toFixed(4) + "</b> a.u.<br>" +
         "Пондеромоторная энергия Uₚ = <b>" + Up.toFixed(4) + "</b> a.u.<br>" +
         "Край плато: E = <b>" + Ec_eV.toFixed(1) + "</b> эВ <br>" +
-        "Край плато: n = <b>" + harmonic.toFixed(1) + "</b> гармоника";
+        "Край плато: n = <b>" + harmonic.toFixed(1) + "</b> гармоника <br>" +
+        "Минимальный размер сетки: Nx = <b>" + Nx_minimal.toFixed(1) + "</b>";
 }
 </script>
 <script>
