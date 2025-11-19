@@ -53,7 +53,7 @@ function calculate() {
     let Ec = Ip + 3.17 * Up;                       // энергия отсечки (a.u.)
     let harmonic = Ec / omega;                     // номер гармоники
     let Ec_eV = Ec/ev_to_au                        // энергия отсечки в эВ
-    let Nx_minimal = (4*r_osc + 2*labs)/dx         // минимальный размер сетки
+    let Nx_minimal = (4 * r_osc + 2 * labs)/dx         // минимальный размер сетки
 
     document.getElementById("result").innerHTML =
         "Осцилляторный радиус r<sub>osc</sub>  = <b>" + r_osc.toFixed(4) + "</b> a.u.<br>" +
