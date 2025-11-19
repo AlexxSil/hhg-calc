@@ -46,10 +46,12 @@ function calculate() {
     // --- Край плато ---
     let Ec = Ip + 3.17 * Up;                       // энергия отсечки (a.u.)
     let harmonic = Ec / omega;                     // номер гармоники
+    let Ec_eV = Ec/ev_to_au                        // энергия отсечки в эВ
 
     document.getElementById("result").innerHTML =
         "Осцилляторный радиус r<sub>osc</sub>  = <b>" + r_osc.toFixed(4) + "</b> a.u.<br>" +
         "Пондеромоторная энергия Uₚ = <b>" + Up.toFixed(4) + "</b> a.u.<br>" +
+        "Край плато: E = <b>" + Ec_eV.toFixed(1) + "</b> эВ"
         "Край плато: n = <b>" + harmonic.toFixed(1) + "</b> гармоника";
 }
 </script>
