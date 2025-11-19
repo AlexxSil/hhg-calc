@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Расчёт r_osc и края плато HHG</title>
+</head>
+<body style="font-family: sans-serif; max-width: 600px; margin: 40px auto;">
+
+<h2>Расчёт осцилляторного радиуса и края плато</h2>
+
+<label>Интенсивность (Вт/см²):</label><br>
+<input id="I" type="number" step="any" placeholder="1e14"><br><br>
+
+<label>Длина волны (нм):</label><br>
+<input id="lambda" type="number" step="any" value="800"><br><br>
+
+<label>Потенциал ионизации (эВ):</label><br>
+<input id="Ip" type="number" step="any" value="13.6"><br><br>
+
+<button onclick="calculate()">Посчитать</button>
+
+<h3>Результаты:</h3>
+<div id="result" style="font-size: 18px; color: darkblue;"></div>
+
+<script>
+function calculate() {
+    let I = parseFloat(document.getElementById("I").value);
+    let lambda = parseFloat(document.getElementById("lambda").value);
+    let Ip_ev = parseFloat(document.getElementById("Ip").value);
+
+    // --- Константы ---
+    const I_to_E = 3.509e16; // пересчёт интенсивности в поле
+    const ev_to_au = 1/27.2114;
+
+    // --- Переводы ---
+    let E0 = Math.sqrt(I / I_to_E);                // поле (a.u.)
+    let omega = 45.56335 / lambda;                 // ω (a.u.)
+    let Ip = Ip_ev * ev_to_au;                     // потенциал ионизации (a.u.)
+
+    // --- Осцилляторный радиус ---
+    let r_osc = E0 / (omega * omega);
+
+    // --- Пондеромоторная энергия ---
+    let Up = (E0*E0) / (4 * omega * omega);
+
+    // --- Край плато ---
+    let Ec = Ip + 3.17 * Up;                       // энергия отсечки (a.u.)
+    let harmonic = Ec / omega;                     // номер гармоники
+
+    document.getElementById("result").innerHTML =
+        "Осцилляторный радиус rₒₛc = <b>" + r_osc.toFixed(4) + "</b> a.u.<br>" +
+        "Пондеромоторная энергия Uₚ = <b>" + Up.toFixed(4) + "</b> a.u.<br>" +
+        "Край плато: n = <b>" + harmonic.toFixed(1) + "</b> гармоника";
+}
+</script>
+
+</body>
+</html>
