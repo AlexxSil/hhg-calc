@@ -9,7 +9,7 @@
 <h2>Расчёт осцилляторного радиуса и края плато</h2>
 
 <label>Интенсивность (Вт/см²):</label><br>
-<input id="I" type="number" step="any" placeholder="1e14"><br><br>
+<input id="I" type="number" step="any" value="1e14"><br><br>
 
 <label>Длина волны (нм):</label><br>
 <input id="lambda" type="number" step="any" value="800"><br><br>
@@ -53,6 +53,13 @@ function calculate() {
         "Край плато: n = <b>" + harmonic.toFixed(1) + "</b> гармоника";
 }
 </script>
-
+<script>
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        calculate();
+    }
+});
+</script>
+    
 </body>
 </html>
