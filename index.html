@@ -35,11 +35,11 @@ function calculate() {
     let Ip_ev = parseFloat(document.getElementById("Ip").value);
 
     // --- Константы ---
-    const I_to_E = 3.509e16; // пересчёт интенсивности в поле
+    const I_a = 3.509e16; // атомная интенсивность
     const ev_to_au = 1/27.2114;
 
     // --- Переводы ---
-    let E0 = Math.sqrt(I / I_to_E);                // поле (a.u.)
+    let E0 = Math.sqrt(I / I_a);                // поле (a.u.)
     let omega = 45.56335 / lambda;                 // ω (a.u.)
     let Ip = Ip_ev * ev_to_au;                     // потенциал ионизации (a.u.)
 
