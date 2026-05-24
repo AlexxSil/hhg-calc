@@ -21,7 +21,7 @@
 <input id="dx" type="number" step="any" value="0.125"><br><br>
 
 <label>Поглощающий слой с одной стороны (a.u.):</label><br>
-<input id="labs" type="number" step="any" value="30"><br><br>
+<input id="labs" type="number" step="any" value="35"><br><br>
     
 <button onclick="calculate()">Посчитать</button>
 
@@ -61,6 +61,7 @@ function calculate() {
         "Пондеромоторная энергия Uₚ = <b>" + Up.toFixed(1) + "</b> a.u.<br>" +
         "Край плато: E = <b>" + Ec_eV.toFixed(1) + "</b> эВ <br>" +
         "Край плато: n = <b>" + harmonic.toFixed(0) + "</b> гармоника <br>" +
+        "dx = <b>" + dx.toFixed(0) + "</b> a.u. <br>" +
         "Минимальный размер сетки: Nx = <b>" + Nx_minimal.toFixed(0) + "</b> <br>";
 }
 </script>
