@@ -50,7 +50,10 @@ function calculate() {
 
     // --- Пондеромоторная энергия ---
     let Up = (E0*E0) / (4 * omega * omega);
-
+    
+    // --- Параметр Келдыша ---
+    let gamma = sqrt(Ip/(2.0*Up));
+    
     // --- Край плато ---
     let Ec = Ip + 3.17 * Up;                       // энергия отсечки (a.u.)
     let harmonic = Ec / omega;                     // номер гармоники
@@ -60,6 +63,7 @@ function calculate() {
     document.getElementById("result").innerHTML =
         "Осцилляторный радиус r<sub>osc</sub>  = <b>" + r_osc.toFixed(1) + "</b> a.u.<br>" +
         "Пондеромоторная энергия Uₚ = <b>" + Up.toFixed(1) + "</b> a.u.<br>" +
+        "Параметр Келдыша &gamma = <b>" + gamma.toFixed(1) + "</b> <br>" +
         "Край плато: E = <b>" + Ec_eV.toFixed(1) + "</b> эВ <br>" +
         "Край плато: n = <b>" + harmonic.toFixed(0) + "</b> гармоника <br>" +
         "Минимальный размер сетки: Nx = <b>" + Nx_minimal.toFixed(0) + "</b> <br>";
